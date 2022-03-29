@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todoey.R
-import com.example.todoey.data.User
+import com.example.todoey.model.data.User
 import com.example.todoey.ui.authenticate.login.LoginActivity
 import com.example.todoey.ui.home.HomeActivity
 import com.example.todoey.utils.Constants

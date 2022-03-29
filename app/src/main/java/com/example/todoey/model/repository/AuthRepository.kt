@@ -1,4 +1,4 @@
-package com.example.todoey.repository
+package com.example.todoey.model.repository
 
 import android.app.Application
 import android.util.Log

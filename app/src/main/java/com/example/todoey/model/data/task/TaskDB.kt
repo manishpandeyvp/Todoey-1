@@ -1,4 +1,4 @@
-package com.example.todoey.data.task
+package com.example.todoey.model.data.task
 
 import android.content.Context
 import androidx.room.Database

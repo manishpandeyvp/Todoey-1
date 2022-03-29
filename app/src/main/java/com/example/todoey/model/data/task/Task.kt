@@ -1,18 +1,16 @@
-package com.example.todoey.data.task
+package com.example.todoey.model.data.task
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.todoey.data.User
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = "task_list")
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    var title: String,
-    var body: String,
-    var created_by: String,
-    var assigned_to: String
+    val id: Int = 1,
+    var title: String = "",
+    var body: String = "",
+    var assigned_to: String = ""
 ) : Parcelable

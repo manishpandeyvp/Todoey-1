@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +14,8 @@
         android:theme="@style/Theme.Todoey">
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".ui.authenticate.signup.SignupActivity"
             android:exported="false" />
@@ -29,9 +31,6 @@
         <activity
             android:name=".ui.authenticate.AuthenticateActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>
