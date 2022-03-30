@@ -6,8 +6,10 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.todoey.R
 import com.example.todoey.ui.authenticate.signup.SignupActivity
+import com.example.todoey.ui.authenticate.signup.SignupViewModel
 import com.example.todoey.ui.home.HomeActivity
 import com.example.todoey.utils.Constants
 import com.example.todoey.utils.Internet
@@ -18,11 +20,14 @@ lateinit var sharedPreference: SharedPreferences
 
 class LoginActivity : AppCompatActivity() {
 
-    private val firebaseAuth = FirebaseAuth.getInstance()
+//    private val firebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
         sharedPreference = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE)
         with(sharedPreference.edit()){
             putBoolean(Constants.IS_CONNECTED_TO_INTERNET, Internet.hasInternetConnectivity(this@LoginActivity))
@@ -41,14 +46,16 @@ class LoginActivity : AppCompatActivity() {
             val email = ev_email.text.toString()
             val pass = ev_password.text.toString()
 
-            firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener{ task ->
-                if(task.isSuccessful){
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
-                }else{
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
-                }
-            }
+            viewModel.logIn(email, pass)
+
+//            firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener{ task ->
+//                if(task.isSuccessful){
+//                    startActivity(Intent(this, HomeActivity::class.java))
+//                    Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
+//                }else{
+//                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+//                }
+//            }
 
         }
     }

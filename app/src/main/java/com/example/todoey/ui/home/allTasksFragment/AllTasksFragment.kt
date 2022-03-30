@@ -29,8 +29,8 @@ class AllTasksFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val tasks = viewModel.getTasks()
-        Log.d("MANISH", tasks.toList().toString())
+//        val tasks = viewModel.getTasks()
+//        Log.d("MANISH", tasks.toList().toString())
     }
 
 }
