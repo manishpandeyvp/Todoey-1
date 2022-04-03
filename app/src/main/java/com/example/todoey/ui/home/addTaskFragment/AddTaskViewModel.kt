@@ -1,7 +1,5 @@
 package com.example.todoey.ui.home.addTaskFragment
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todoey.model.data.task.Task
@@ -14,7 +12,7 @@ class AddTaskViewModel : ViewModel(){
 
     fun addTask(task: Task) {
         viewModelScope.launch {
-            repository.addTask(task)
+            repository.addTaskToRoomDb(task)
         }
     }
 

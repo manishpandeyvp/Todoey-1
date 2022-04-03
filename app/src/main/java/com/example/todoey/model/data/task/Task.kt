@@ -9,8 +9,8 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "task_list")
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 1,
-    var title: String = "",
-    var body: String = "",
-    var assigned_to: String = ""
+    val id: Int,
+    var title: String,
+    var body: String,
+    var pinned : Boolean
 ) : Parcelable

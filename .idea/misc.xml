@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/green_picker.xml" value="0.1755" />
         <entry key="app/src/main/res/drawable/ic_undraw_to_do_list_re_9nt7.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/orange_picker.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/pink_picker.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/purple_picker.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/red_picker.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/yellow_picker.xml" value="0.1755" />
+        <entry key="app/src/main/res/font/comfortaa.xml" value="0.2828125" />
         <entry key="app/src/main/res/layout/activity_authenticate.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2526041666666667" />
@@ -11,6 +18,7 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/add_task_fragment.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/all_tasks_fragment.xml" value="0.2526041666666667" />
+        <entry key="app/src/main/res/layout/item_note.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/signup_fragment.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2526041666666667" />

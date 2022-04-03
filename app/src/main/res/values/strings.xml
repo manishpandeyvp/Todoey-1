@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Todoey</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="save">SAVE</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="pinned">Pinned</string>
+    <string name="back">back</string>
+    <string name="all">All</string>
+    <string name="notes">Notes</string>
 </resources>

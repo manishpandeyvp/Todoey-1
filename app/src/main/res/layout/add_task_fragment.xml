@@ -4,22 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/orange"
     android:orientation="vertical"
+    android:padding="18dp"
     tools:context=".ui.home.addTaskFragment.AddTaskFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pinned"
+            android:padding="12dp"
+            app:tint="@color/white"
+            android:contentDescription="@string/pinned" />
+
+        <ImageView
+            android:id="@+id/btn_save"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_check"
+            android:padding="12dp"
+            app:tint="@color/white"
+            android:contentDescription="@string/save" />
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/ev_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:hint="Title"
-        android:inputType="text"
+        android:hint="@string/title"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="8dp"
+        android:fontFamily="@font/comfortaa_bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:background="@android:color/transparent"
-        android:padding="5dp"
         android:autofillHints="text"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.05"/>
+        android:textSize="30sp"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/ev_desc"
@@ -27,30 +62,76 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@android:color/transparent"
-        android:paddingStart="6dp"
-        android:paddingVertical="5dp"
-        android:paddingEnd="6dp"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="8dp"
+        android:fontFamily="@font/comfortaa_medium"
         android:ems="10"
         android:gravity="top"
-        android:textSize="19sp"
-        android:layout_margin="5dp"
-        android:letterSpacing="0.02"
-        android:hint="Desc"
+        android:textSize="17sp"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
         android:autofillHints="text"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_save"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#222222"
-        android:src="@drawable/ic_check"
-        app:tint="@color/white"
-        android:layout_gravity="end"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:contentDescription="SAVE"
-        android:clickable="true"/>
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/orange_picker"
+            android:src="@drawable/ic_check"
+            android:padding="8dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/purple_picker"
+            android:padding="8dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/yellow_picker"
+            android:padding="8dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/pink_picker"
+            android:padding="8dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/green_picker"
+            android:padding="8dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/red_picker"
+            android:padding="8dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

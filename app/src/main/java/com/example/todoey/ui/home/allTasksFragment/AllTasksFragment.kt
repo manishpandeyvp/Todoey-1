@@ -7,9 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import com.example.todoey.R
-import kotlinx.coroutines.launch
 
 class AllTasksFragment : Fragment() {
 
@@ -24,13 +22,22 @@ class AllTasksFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AllTasksViewModel::class.java)
+        viewModel = ViewModelProvider(this)[AllTasksViewModel::class.java]
     }
 
     override fun onResume() {
         super.onResume()
-//        val tasks = viewModel.getTasks()
-//        Log.d("MANISH", tasks.toList().toString())
+        getAndSetMemberList()
+    }
+
+    private fun getAndSetMemberList() {
+        viewModel.getTasks().observe(this) { tasks ->
+            if (tasks.isNotEmpty()) {
+                Log.d("MANISH", tasks.toString())
+            } else {
+                Log.d("MANISH", "No tasks")
+            }
+        }
     }
 
 }
