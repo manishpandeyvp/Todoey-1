@@ -12,5 +12,6 @@ data class Task(
     val id: Int,
     var title: String,
     var body: String,
-    var pinned : Boolean
+    var pinned: Boolean,
+    var color: Int
 ) : Parcelable

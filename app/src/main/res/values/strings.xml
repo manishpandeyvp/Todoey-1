@@ -8,4 +8,6 @@
     <string name="back">back</string>
     <string name="all">All</string>
     <string name="notes">Notes</string>
+    <string name="no_all_notes">No notes to show! Try adding one.</string>
+    <string name="no_pinned">Nothing pinned yet!</string>
 </resources>
