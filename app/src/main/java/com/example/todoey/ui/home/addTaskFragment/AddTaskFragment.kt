@@ -5,26 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.todoey.MyApplication
 import com.example.todoey.R
-import com.example.todoey.databinding.AddTaskFragmentBinding
+import com.example.todoey.model.data.task.Task
+import com.example.todoey.ui.home.allTasksFragment.AllTasksFragment
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.add_task_fragment.*
 
 class AddTaskFragment : Fragment() {
 
     private lateinit var viewModel: AddTaskViewModel
-    private lateinit var binding: AddTaskFragmentBinding
     private lateinit var selectedColor: ImageView
+    private var color: Int = R.color.orange
+    private var pinned: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = AddTaskFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.add_task_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,16 +50,54 @@ class AddTaskFragment : Fragment() {
         yellowPicker.setOnClickListener {
             setColor(yellowPicker)
         }
-//        view?.setOnClickListener{ view ->
-//            when(view){
-//                orangePicker -> setColor(orangePicker)
-//                purplePicker -> setColor(purplePicker)
-//                yellowPicker -> setColor(yellowPicker)
-//                pinkPicker -> setColor(pinkPicker)
-//                greenPicker -> setColor(greenPicker)
-//                redPicker -> setColor(redPicker)
-//            }
-//        }
+
+        pinkPicker.setOnClickListener {
+            setColor(pinkPicker)
+        }
+
+        greenPicker.setOnClickListener {
+            setColor(greenPicker)
+        }
+
+        redPicker.setOnClickListener {
+            setColor(redPicker)
+        }
+
+        btn_pinned.setOnClickListener {
+            if (pinned) {
+                btn_pinned.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        MyApplication.getContext(),
+                        R.drawable.pinned
+                    )
+                )
+            } else {
+                btn_pinned.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        MyApplication.getContext(),
+                        R.drawable.pinned_filled
+                    )
+                )
+            }
+            pinned = !pinned
+        }
+
+        btn_save.setOnClickListener {
+            val title = ev_title.text.toString()
+            val body = ev_desc.text.toString()
+
+            val task = Task(0, title, body, pinned, color)
+
+            viewModel.addTask(task).also {
+                Toast.makeText(MyApplication.getContext(), "Saved!", Toast.LENGTH_LONG).show()
+
+                val fragmentManager = activity?.supportFragmentManager
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                fragmentTransaction?.replace(R.id.fragment_container, AllTasksFragment())
+                fragmentTransaction?.addToBackStack(null)
+                fragmentTransaction?.commit()
+            }
+        }
     }
 
     private fun setColor(view: ImageView) {
@@ -80,7 +121,9 @@ class AddTaskFragment : Fragment() {
     }
 
     private fun setBgColor(color: Int) {
+        this.color = color
         ll_add_task.background = AppCompatResources.getDrawable(MyApplication.getContext(), color)
     }
+
 
 }

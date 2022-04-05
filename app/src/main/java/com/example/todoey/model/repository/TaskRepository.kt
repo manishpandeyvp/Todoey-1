@@ -10,9 +10,11 @@ class TaskRepository {
 
     private val taskDao: TaskDao = TaskDB.getDatabase(MyApplication.getContext()).taskDao()
 
-    suspend fun addTaskToRoomDb(task : Task){
+    suspend fun addTaskToRoomDb(task: Task) {
         taskDao.addTask(task)
     }
 
-    val getAllTaskFromRoomDB : LiveData<List<Task>> = taskDao.getAllTasks()
+    val getAllTaskFromRoomDB: LiveData<List<Task>> = taskDao.getAllTasks()
+    val getPinnedTask: LiveData<List<Task>> = taskDao.getPinnedTask(true)
+
 }
