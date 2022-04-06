@@ -1,5 +1,7 @@
 package com.example.todoey.model.adapters
 
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,8 @@ class PinnedTaskAdapter : RecyclerView.Adapter<PinnedTaskAdapter.ViewHolder>() {
         val task = pinnedTaskList[position]
 
         val view = holder.itemView
+        Log.d("MANISH", task.color)
+        view.cv_item_task.setCardBackgroundColor(Color.parseColor(task.color))
         view.tv_title.text = task.title
         view.tv_body.text = task.body
     }

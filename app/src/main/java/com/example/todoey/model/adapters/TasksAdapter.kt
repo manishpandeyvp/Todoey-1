@@ -1,5 +1,6 @@
 package com.example.todoey.model.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,7 @@ class TasksAdapter : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
         val task = taskList[position]
 
         val view = holder.itemView
-//        TODO : how to set color of the card view according to the color of task
+        view.cv_item_task.setCardBackgroundColor(Color.parseColor(task.color))
         view.tv_title.text = task.title
         view.tv_body.text = task.body
     }

@@ -13,6 +13,7 @@ import com.example.todoey.MyApplication
 import com.example.todoey.R
 import com.example.todoey.model.data.task.Task
 import com.example.todoey.ui.home.allTasksFragment.AllTasksFragment
+import com.example.todoey.utils.Constants
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.add_task_fragment.*
 
@@ -20,7 +21,7 @@ class AddTaskFragment : Fragment() {
 
     private lateinit var viewModel: AddTaskViewModel
     private lateinit var selectedColor: ImageView
-    private var color: Int = R.color.orange
+    private var color: String = Integer.toHexString(R.color.orange)
     private var pinned: Boolean = false
 
     override fun onCreateView(
@@ -110,18 +111,18 @@ class AddTaskFragment : Fragment() {
             )
         )
         when (view) {
-            orangePicker -> setBgColor(R.color.orange)
-            purplePicker -> setBgColor(R.color.purple)
-            yellowPicker -> setBgColor(R.color.yellow)
-            pinkPicker -> setBgColor(R.color.pink)
-            greenPicker -> setBgColor(R.color.green)
-            redPicker -> setBgColor(R.color.red)
+            orangePicker -> setBgColor(R.color.orange, Constants.ORANGE)
+            purplePicker -> setBgColor(R.color.purple, Constants.PURPLE)
+            yellowPicker -> setBgColor(R.color.yellow, Constants.YELLOW)
+            pinkPicker -> setBgColor(R.color.pink, Constants.PINK)
+            greenPicker -> setBgColor(R.color.green, Constants.GREEN)
+            redPicker -> setBgColor(R.color.red, Constants.RED)
         }
         selectedColor = view
     }
 
-    private fun setBgColor(color: Int) {
-        this.color = color
+    private fun setBgColor(color: Int, s : String) {
+        this.color = s
         ll_add_task.background = AppCompatResources.getDrawable(MyApplication.getContext(), color)
     }
 

@@ -13,5 +13,5 @@ data class Task(
     var title: String,
     var body: String,
     var pinned: Boolean,
-    var color: Int
+    var color: String
 ) : Parcelable
