@@ -7,18 +7,18 @@ import com.example.todoey.model.repository.FactRepository
 import com.example.todoey.model.repository.TaskRepository
 
 class AllTasksViewModel : ViewModel() {
-    private val repository : TaskRepository = TaskRepository()
-    private val factRepository : FactRepository = FactRepository()
+    private val repository: TaskRepository = TaskRepository()
+    private val factRepository: FactRepository = FactRepository()
 
-    fun getTasks() :LiveData<List<Task>>  {
+    fun getTasks(): LiveData<List<Task>> {
         return repository.getAllTaskFromRoomDB
     }
 
-    suspend fun getFact() : String? {
+    suspend fun getFact(): String? {
         return factRepository.getFact()
     }
 
-    fun getPinnedTasks() : LiveData<List<Task>> {
+    fun getPinnedTasks(): LiveData<List<Task>> {
         return repository.getPinnedTask
     }
 }

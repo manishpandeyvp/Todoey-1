@@ -12,9 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.todoey.MyApplication
 import com.example.todoey.R
 import com.example.todoey.model.data.task.Task
-import com.example.todoey.ui.home.allTasksFragment.AllTasksFragment
+import com.example.todoey.utils.Communicator
 import com.example.todoey.utils.Constants
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.add_task_fragment.*
 
 class AddTaskFragment : Fragment() {
@@ -23,11 +22,13 @@ class AddTaskFragment : Fragment() {
     private lateinit var selectedColor: ImageView
     private var color: String = Integer.toHexString(R.color.orange)
     private var pinned: Boolean = false
+    private lateinit var communicator: Communicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        communicator = activity as Communicator
         return inflater.inflate(R.layout.add_task_fragment, container, false)
     }
 
@@ -91,19 +92,13 @@ class AddTaskFragment : Fragment() {
 
             viewModel.addTask(task).also {
                 Toast.makeText(MyApplication.getContext(), "Saved!", Toast.LENGTH_LONG).show()
-
-                val fragmentManager = activity?.supportFragmentManager
-                val fragmentTransaction = fragmentManager?.beginTransaction()
-                fragmentTransaction?.replace(R.id.fragment_container, AllTasksFragment())
-                fragmentTransaction?.addToBackStack(null)
-                fragmentTransaction?.commit()
+                communicator.postTaskSaved()
             }
         }
     }
 
     private fun setColor(view: ImageView) {
         selectedColor.setImageResource(0)
-        print("Clicked")
         view.setImageDrawable(
             AppCompatResources.getDrawable(
                 MyApplication.getContext(),
@@ -121,7 +116,7 @@ class AddTaskFragment : Fragment() {
         selectedColor = view
     }
 
-    private fun setBgColor(color: Int, s : String) {
+    private fun setBgColor(color: Int, s: String) {
         this.color = s
         ll_add_task.background = AppCompatResources.getDrawable(MyApplication.getContext(), color)
     }

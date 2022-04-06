@@ -20,5 +20,7 @@ public class MyApplication extends Application {
         return mContext;
     }
 
-    public static SharedPreferences getSharedPrefs() { return sharedPref; }
+    public static SharedPreferences getSharedPrefs() {
+        return sharedPref;
+    }
 }

@@ -10,6 +10,13 @@
     <string name="notes">Notes</string>
     <string name="no_all_notes">No notes to show! Try adding one.</string>
     <string name="no_pinned">Nothing pinned yet!</string>
-
+    <string name="orange_picker">Orange Picker</string>
+    <string name="purple_picker">Purple Picker</string>
+    <string name="yellow_picker">Yellow Picker</string>
+    <string name="pink_picker">Pink Picker</string>
+    <string name="green_picker">Green Picker</string>
+    <string name="red_picker">Red Picker</string>
+    <string name="fun_fact">Fun Fact!</string>
+    <string name="fun_fact_icon">fun_fact_icon</string>
 
 </resources>

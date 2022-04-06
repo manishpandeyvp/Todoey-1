@@ -21,8 +21,8 @@ class TasksAdapter : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = taskList[position]
-
         val view = holder.itemView
+
         view.cv_item_task.setCardBackgroundColor(Color.parseColor(task.color))
         view.tv_title.text = task.title
         view.tv_body.text = task.body

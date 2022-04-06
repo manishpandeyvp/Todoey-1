@@ -1,7 +1,6 @@
 package com.example.todoey.ui.home.allTasksFragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,24 +35,19 @@ class AllTasksFragment : Fragment() {
 
         iv_fun_fact.clipToOutline = true
 
-        rv_all.layoutManager = LinearLayoutManager(context)
-        val taskAdapter = TasksAdapter()
-        rv_all.adapter = taskAdapter
-        getAndSetAllTasksList(taskAdapter)
-
-        rv_pinned.layoutManager = LinearLayoutManager(context)
-        val pinnedTaskAdapter = PinnedTaskAdapter()
-        rv_pinned.adapter = pinnedTaskAdapter
-        getAndSetPinnedTasksList(pinnedTaskAdapter)
-
+        getAndSetAllTasksList()
+        getAndSetPinnedTasksList()
 
         lifecycleScope.launch {
             tv_fun_fact.text = viewModel.getFact().toString()
-//            Log.d("MANISH", viewModel.getFact().toString())
         }
     }
 
-    private fun getAndSetAllTasksList(adapter: TasksAdapter) {
+    private fun getAndSetAllTasksList() {
+        rv_all.layoutManager = LinearLayoutManager(context)
+        val adapter = TasksAdapter()
+        rv_all.adapter = adapter
+
         viewModel.getTasks().observe(this) { tasks ->
             if (tasks.isNotEmpty()) {
                 tv_no_all_notes.visibility = View.GONE
@@ -66,7 +60,11 @@ class AllTasksFragment : Fragment() {
         }
     }
 
-    private fun getAndSetPinnedTasksList(adapter : PinnedTaskAdapter){
+    private fun getAndSetPinnedTasksList() {
+        rv_pinned.layoutManager = LinearLayoutManager(context)
+        val adapter = PinnedTaskAdapter()
+        rv_pinned.adapter = adapter
+
         viewModel.getPinnedTasks().observe(this) { tasks ->
             if (tasks.isNotEmpty()) {
                 tv_no_pinned_notes.visibility = View.GONE

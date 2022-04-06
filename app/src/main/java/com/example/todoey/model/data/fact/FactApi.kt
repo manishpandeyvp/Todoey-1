@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface FactApi {
 
     @GET("random.json")
-    suspend fun getFact(@Query("language") lang : String) : Response<Fact>
+    suspend fun getFact(@Query("language") lang: String): Response<Fact>
 
 }
