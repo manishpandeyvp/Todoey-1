@@ -7,4 +7,5 @@ object Constants {
     const val PURPLE: String = "#9C51E0"
     const val RED: String = "#DA2D2D"
     const val YELLOW: String = "#FFBD35"
+    const val SHARED_PREF: String = "sharedPref"
 }

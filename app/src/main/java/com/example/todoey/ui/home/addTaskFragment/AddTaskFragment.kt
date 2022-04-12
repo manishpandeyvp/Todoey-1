@@ -16,7 +16,7 @@ import com.example.todoey.utils.Communicator
 import com.example.todoey.utils.Constants
 import kotlinx.android.synthetic.main.add_task_fragment.*
 
-class AddTaskFragment : Fragment() {
+class AddTaskFragment : Fragment(), View.OnClickListener {
 
     private lateinit var viewModel: AddTaskViewModel
     private lateinit var selectedColor: ImageView
@@ -41,46 +41,18 @@ class AddTaskFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        orangePicker.setOnClickListener {
-            setColor(orangePicker)
-        }
-
-        purplePicker.setOnClickListener {
-            setColor(purplePicker)
-        }
-
-        yellowPicker.setOnClickListener {
-            setColor(yellowPicker)
-        }
-
-        pinkPicker.setOnClickListener {
-            setColor(pinkPicker)
-        }
-
-        greenPicker.setOnClickListener {
-            setColor(greenPicker)
-        }
-
-        redPicker.setOnClickListener {
-            setColor(redPicker)
-        }
+        orangePicker.setOnClickListener(this)
+        purplePicker.setOnClickListener(this)
+        yellowPicker.setOnClickListener(this)
+        pinkPicker.setOnClickListener(this)
+        greenPicker.setOnClickListener(this)
+        redPicker.setOnClickListener(this)
 
         btn_pinned.setOnClickListener {
-            if (pinned) {
-                btn_pinned.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        MyApplication.getContext(),
-                        R.drawable.pinned
-                    )
-                )
-            } else {
-                btn_pinned.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        MyApplication.getContext(),
-                        R.drawable.pinned_filled
-                    )
-                )
-            }
+            if (pinned)
+                setImageDrawable(btn_pinned, R.drawable.pinned)
+            else
+                setImageDrawable(btn_pinned, R.drawable.pinned_filled)
             pinned = !pinned
         }
 
@@ -99,12 +71,8 @@ class AddTaskFragment : Fragment() {
 
     private fun setColor(view: ImageView) {
         selectedColor.setImageResource(0)
-        view.setImageDrawable(
-            AppCompatResources.getDrawable(
-                MyApplication.getContext(),
-                R.drawable.ic_check
-            )
-        )
+        setImageDrawable(view, R.drawable.ic_check)
+
         when (view) {
             orangePicker -> setBgColor(R.color.orange, Constants.ORANGE)
             purplePicker -> setBgColor(R.color.purple, Constants.PURPLE)
@@ -121,5 +89,23 @@ class AddTaskFragment : Fragment() {
         ll_add_task.background = AppCompatResources.getDrawable(MyApplication.getContext(), color)
     }
 
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.orangePicker -> setColor(orangePicker)
+            R.id.purplePicker -> setColor(purplePicker)
+            R.id.yellowPicker -> setColor(yellowPicker)
+            R.id.pinkPicker -> setColor(pinkPicker)
+            R.id.greenPicker -> setColor(greenPicker)
+            R.id.redPicker -> setColor(redPicker)
+        }
+    }
 
+    private fun setImageDrawable(view: ImageView, drawable: Int) {
+        view.setImageDrawable(
+            AppCompatResources.getDrawable(
+                MyApplication.getContext(),
+                drawable
+            )
+        )
+    }
 }

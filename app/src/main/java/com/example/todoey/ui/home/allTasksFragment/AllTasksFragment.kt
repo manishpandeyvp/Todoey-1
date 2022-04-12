@@ -17,6 +17,9 @@ import kotlinx.coroutines.launch
 class AllTasksFragment : Fragment() {
 
     private lateinit var viewModel: AllTasksViewModel
+    private lateinit var allTasksAdapter: TasksAdapter
+    private lateinit var pinnedTaskAdapter: PinnedTaskAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,19 +38,25 @@ class AllTasksFragment : Fragment() {
 
         iv_fun_fact.clipToOutline = true
 
-        getAndSetAllTasksList()
-        getAndSetPinnedTasksList()
+        initAdapters()
+        observe()
 
         lifecycleScope.launch {
             tv_fun_fact.text = viewModel.getFact().toString()
         }
     }
 
-    private fun getAndSetAllTasksList() {
+    private fun initAdapters() {
         rv_all.layoutManager = LinearLayoutManager(context)
-        val adapter = TasksAdapter()
-        rv_all.adapter = adapter
+        allTasksAdapter = TasksAdapter()
+        rv_all.adapter = allTasksAdapter
 
+        rv_pinned.layoutManager = LinearLayoutManager(context)
+        pinnedTaskAdapter = PinnedTaskAdapter()
+        rv_pinned.adapter = pinnedTaskAdapter
+    }
+
+    private fun observe() {
         viewModel.getTasks().observe(this) { tasks ->
             if (tasks.isNotEmpty()) {
                 tv_no_all_notes.visibility = View.GONE
@@ -56,14 +65,8 @@ class AllTasksFragment : Fragment() {
                 tv_no_all_notes.visibility = View.VISIBLE
                 rv_all.visibility = View.GONE
             }
-            adapter.setData(tasks)
+            allTasksAdapter.setData(tasks)
         }
-    }
-
-    private fun getAndSetPinnedTasksList() {
-        rv_pinned.layoutManager = LinearLayoutManager(context)
-        val adapter = PinnedTaskAdapter()
-        rv_pinned.adapter = adapter
 
         viewModel.getPinnedTasks().observe(this) { tasks ->
             if (tasks.isNotEmpty()) {
@@ -73,7 +76,7 @@ class AllTasksFragment : Fragment() {
                 tv_no_pinned_notes.visibility = View.VISIBLE
                 rv_pinned.visibility = View.GONE
             }
-            adapter.setData(tasks)
+            pinnedTaskAdapter.setData(tasks)
         }
     }
 
