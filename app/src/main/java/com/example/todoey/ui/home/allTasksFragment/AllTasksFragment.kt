@@ -38,6 +38,8 @@ class AllTasksFragment : Fragment() {
 
         iv_fun_fact.clipToOutline = true
 
+//        TODO : (Nikita) Make two different functions for initialising Adapters and observing Data :: Done
+
         initAdapters()
         observe()
 

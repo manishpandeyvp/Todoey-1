@@ -41,6 +41,8 @@ class AddTaskFragment : Fragment(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
 
+//        TODO : (Nikita) Optimize onClick Listener :: Done
+
         orangePicker.setOnClickListener(this)
         purplePicker.setOnClickListener(this)
         yellowPicker.setOnClickListener(this)
