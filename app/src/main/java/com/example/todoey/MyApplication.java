@@ -8,8 +8,6 @@ import com.example.todoey.utils.Constants;
 
 public class MyApplication extends Application {
 
-//    TODO : (Nikita) Remove static keyword :: Not Done
-
     private static Context mContext;
     private static SharedPreferences sharedPref;
 

@@ -10,8 +10,8 @@ import kotlinx.android.parcel.Parcelize
 data class Task(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    var title: String,
-    var body: String,
-    var pinned: Boolean,
-    var color: String
+    val title: String,
+    val body: String,
+    val pinned: Boolean,
+    val color: String
 ) : Parcelable

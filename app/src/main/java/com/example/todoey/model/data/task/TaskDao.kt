@@ -15,7 +15,7 @@ interface TaskDao {
     @Query("SELECT * FROM task_list ORDER BY id ASC")
     fun getAllTasks(): LiveData<List<Task>>
 
-    @Query("SELECT * FROM TASK_LIST WHERE pinned = :pinned ORDER BY id ASC")
+    @Query("SELECT * FROM task_list WHERE pinned = :pinned ORDER BY id ASC")
     fun getPinnedTask(pinned: Boolean): LiveData<List<Task>>
 
 }
