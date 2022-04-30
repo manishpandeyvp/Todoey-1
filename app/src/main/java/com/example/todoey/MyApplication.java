@@ -8,13 +8,13 @@ import com.example.todoey.utils.Constants;
 
 public class MyApplication extends Application {
 
-    private static Context mContext;
+    private static MyApplication mContext;
     private static SharedPreferences sharedPref;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = getBaseContext();
+        mContext = this;
         sharedPref = getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE);
     }
 
